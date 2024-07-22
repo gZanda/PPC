@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
     if (id_process == 0) {
         std::cout << std::endl << "Vetor resultante: " << std::endl;
         for (int i = 0; i < N; i++) {
-            printf("%d ", data[i]);
+            std::cout << data[i] << " ";
         }
         std::cout << std::endl;
     }
