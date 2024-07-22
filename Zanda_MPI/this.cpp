@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
 
     // Cada processo deve multiplicar cada elemento do seu subconjunto pelo valor mínimo
     for (int i = 0; i < subset_size; i++) {
-        subset[i] *= global_min;
+        subset[i] = subset[i] * global_min;
     }
 
     // Cada processo envia seu conjunto de valores alterados para o processo 0 - GATHER
