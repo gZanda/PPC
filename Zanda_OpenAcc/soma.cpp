@@ -11,7 +11,6 @@ int main(void)
     double sum;
     int i;
 
-    /* Initialization of the vectors */
     for (i = 0; i < NX; i++) {
         vecA[i] = 1.0 / ((double) (NX - i));
         vecB[i] = vecA[i] * vecA[i];
@@ -22,12 +21,13 @@ int main(void)
     } 
 
     sum = 0.0;
-    /* Compute the check value */
+    
+    printf("Vetor = ");
     for (i = 0; i < NX; i++) {
         sum += vecC[i];
-        printf("vecC[%d] = ", vecC[i]);
+        printf(" ", vecC[i], " ");
     }
-    printf("Reduction sum: %18.16f\n", sum);
+    printf("\nTotal: %18.16f\n", sum);
 
     return 0;
 }
