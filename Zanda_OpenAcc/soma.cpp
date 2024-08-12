@@ -3,13 +3,12 @@
 #include <stdio.h>
 #include <assert.h>
 #include <iostream>
-#include <vector>
 
 int main() {
     const int N = 100; // Tamanho dos vetores
 
     // Inicialização dos vetores
-    std::vector<int> a(N), b(N), c(N);
+    int a[N], b[N], c[N];
 
     // Preenche os vetores a e b com alguns valores
     for (int i = 0; i < N; ++i) {
