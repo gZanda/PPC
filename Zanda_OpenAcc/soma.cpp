@@ -15,6 +15,14 @@ int main() {
         a[i] = i;
         b[i] = 2 * i;
     }
+    printf("Vetor a:\n");
+    for (int i = 0; i < 100; ++i) {
+        std::cout << "a[" << i << "] = " << a[i] << std::endl;
+    }
+    printf("Vetor b:\n");
+    for (int i = 0; i < 100; ++i) {
+        std::cout << "b[" << i << "] = " << b[i] << std::endl;
+    }
 
     // Soma dos vetores a e b em paralelo usando OpenACC
     #pragma acc data copyin(a[0:N], b[0:N]) copyout(c[0:N])
@@ -26,7 +34,7 @@ int main() {
     }
 
     // Exibe os primeiros 10 resultados
-    std::cout << "Elementos:\n";
+    printf("Resultado:\n");
     for (int i = 0; i < 100; ++i) {
         std::cout << "c[" << i << "] = " << c[i] << std::endl;
     }
