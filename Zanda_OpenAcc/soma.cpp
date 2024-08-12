@@ -25,7 +25,7 @@ int main(void)
     printf("Vetor = ");
     for (i = 0; i < NX; i++) {
         sum += vecC[i];
-        printf(" ", vecC[i], " ");
+        printf(" %.2f", vecC[i]);
     }
     printf("\nTotal: %18.16f\n", sum);
 
