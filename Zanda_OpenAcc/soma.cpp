@@ -25,6 +25,7 @@ int main(void)
     /* Compute the check value */
     for (i = 0; i < NX; i++) {
         sum += vecC[i];
+        printf("vecC[%d] = ", vecC[i]);
     }
     printf("Reduction sum: %18.16f\n", sum);
 
