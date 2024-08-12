@@ -1,4 +1,5 @@
 
+#include <openacc.h>
 #include <stdio.h>
 #include <assert.h>
 
