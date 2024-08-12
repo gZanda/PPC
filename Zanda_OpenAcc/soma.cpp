@@ -2,46 +2,31 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <iostream>
 
-int main() {
-    const int N = 100; // Tamanho dos vetores
+#define NX 100
 
-    // Inicialização dos vetores
-    int a[N], b[N], c[N];
+int main(void)
+{
+    double vecA[NX], vecB[NX], vecC[NX];
+    double sum;
+    int i;
 
-    // Preenche os vetores a e b com alguns valores
-    for (int i = 0; i < N; ++i) {
-        a[i] = i;
-        b[i] = 2 * i;
+    /* Initialization of the vectors */
+    for (i = 0; i < NX; i++) {
+        vecA[i] = 1.0 / ((double) (NX - i));
+        vecB[i] = vecA[i] * vecA[i];
     }
 
-    // Exibe o vetor a
-    printf("Vetor a:\n");
-    for (int i = 0; i < 10; ++i) { // Mostra apenas os primeiros 10 elementos para simplicidade
-        std::cout << "a[" << i << "] = " << a[i] << std::endl;
-    }
+    for (i = 0; i < NX; i++) {
+       vecC[i] = vecA[i] + vecB[i];
+    } 
 
-    // Exibe o vetor b
-    printf("Vetor b:\n");
-    for (int i = 0; i < 10; ++i) { // Mostra apenas os primeiros 10 elementos para simplicidade
-        std::cout << "b[" << i << "] = " << b[i] << std::endl;
+    sum = 0.0;
+    /* Compute the check value */
+    for (i = 0; i < NX; i++) {
+        sum += vecC[i];
     }
-
-    // Soma dos vetores a e b em paralelo usando OpenACC
-    #pragma acc data copyin(a[0:N], b[0:N]) copyout(c[0:N])
-    {
-        #pragma acc parallel loop
-        for (int i = 0; i < N; ++i) {
-            c[i] = a[i] + b[i];
-        }
-    }
-
-    // Exibe os primeiros 10 resultados
-    printf("Resultado:\n");
-    for (int i = 0; i < 10; ++i) { // Mostra apenas os primeiros 10 elementos para simplicidade
-        std::cout << "c[" << i << "] = " << c[i] << std::endl;
-    }
+    printf("Reduction sum: %18.16f\n", sum);
 
     return 0;
 }
